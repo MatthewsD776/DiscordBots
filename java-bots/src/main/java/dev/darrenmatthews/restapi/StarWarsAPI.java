@@ -1,15 +1,13 @@
 package dev.darrenmatthews.restapi;
 
-import java.awt.Color;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.javacord.api.entity.message.MessageBuilder;
-import org.javacord.api.entity.message.embed.EmbedBuilder;
-import org.json.JSONObject;
+import com.google.gson.Gson;
 
 import dev.darrenmatthews.discord.exceptions.RestAPIException;
 import dev.darrenmatthews.libs.RestAPI;
+import dev.darrenmatthews.pojo.StarWarsFilm;
 
 public class StarWarsAPI {
 	private static final Logger LOGGER = LogManager.getLogger();
@@ -23,29 +21,10 @@ public class StarWarsAPI {
 		String filmUrl = STAR_WARS_API_ROOT + "films/" + filmId;
 
 		String jsonString = RestAPI.getRequest(filmUrl);
-
-		JSONObject obj = new JSONObject(jsonString);
-
-		String filmName = obj.getString("title");
-		String openingCrawl = obj.getString("opening_crawl");
-		String director = obj.getString("director");
-		String releaseDate = obj.getString("release_date");
-
-		EmbedBuilder builder = new EmbedBuilder();
-		builder.setTitle(filmName);
-		builder.setColor(Color.GREEN);
-		builder.setFooter("Bot by Dazza");
-		builder.addField("Director : ", director);
-		builder.addField("Release Date : ", releaseDate);
-		builder.addField("Opening Crawl : ", openingCrawl);
-
-		MessageBuilder mBuilder = new MessageBuilder();
-		mBuilder.append("Here is that Star Wars Film you were after you lil Biatch:");
-		mBuilder.setEmbed(builder);
-		mBuilder.setTts(true);
-
-		return mBuilder;
-
+		Gson gson = new Gson();
+		StarWarsFilm film = gson.fromJson(jsonString, StarWarsFilm.class);
+		
+		return film.getDiscordRender();
 	}
 
 }
