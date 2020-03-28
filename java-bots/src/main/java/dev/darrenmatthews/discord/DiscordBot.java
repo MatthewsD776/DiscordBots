@@ -5,9 +5,6 @@ import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.MessageBuilder;
 
-import dev.darrenmatthews.discord.exceptions.BitchException;
-import dev.darrenmatthews.restapi.StarWarsAPI;
-
 public class DiscordBot {
 
 	public static void main(String[] args) {
@@ -17,21 +14,11 @@ public class DiscordBot {
 
 		api.addMessageCreateListener(event -> {
 			String message = event.getMessageContent();
-			String userDisplayName = event.getMessage().getAuthor().getDisplayName();
 			TextChannel channel = event.getChannel();
 
 			if (message.startsWith("!starwars")) {
-				String[] starwarsArg = message.split(" ");
-
-				try {
-					MessageBuilder starWarsResponse = StarWarsAPI.getFilmInformation(starwarsArg[1]);
-					starWarsResponse.send(channel);
-
-				} catch (BitchException e) {
-					MessageBuilder error = e.getDiscordMessage(userDisplayName);
-					error.send(channel);
-				}
-
+				MessageBuilder response = StarWars.analyse(message, event);
+				response.send(channel);
 			}
 		});
 	}

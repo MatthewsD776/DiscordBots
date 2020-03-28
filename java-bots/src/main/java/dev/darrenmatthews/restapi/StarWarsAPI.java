@@ -26,7 +26,7 @@ public class StarWarsAPI {
 			Response response = client.newCall(request).execute();
 			
 			if(!response.isSuccessful()) {
-				throw new BitchException();
+				throw new BitchException("Film Not Found by API");
 			}
 			
 			String json = response.body().string();
