@@ -25,6 +25,8 @@ public class DiscordBot {
 				MessageBuilder response = StarWarsSubBot.analyse(message);
 				response.send(channel);
 				LOGGER.info("Star Wars event from {} on {} complete", author, channel);
+			} else if (message.startsWith("!")) {
+				event.getChannel().sendMessage("Not Implemented this stuff yet");
 			}
 		});
 	}

@@ -9,6 +9,8 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import dev.darrenmatthews.starwars.api.StarWarsResources;
+
 public class StarWarsFilm extends StarWarsInformation {
 
 	@SerializedName("title")
@@ -74,8 +76,10 @@ public class StarWarsFilm extends StarWarsInformation {
 		builder.setFooter("Bot by Dazza");
 		builder.addField("Director : ", this.director);
 		builder.addField("Release Date : ", this.releaseDate);
-		builder.addField("Opening Crawl : ", this.openingCrawl);
-
+		String crawl = this.openingCrawl.replaceAll("\\r\\n", " ");
+		builder.addField("Opening Crawl : ", crawl);
+		builder.setThumbnail(StarWarsResources.getC3PO());
+		
 		MessageBuilder mBuilder = new MessageBuilder();
 		mBuilder.append("Here is that Star Wars Film you were after you lil Biatch:");
 		mBuilder.setEmbed(builder);

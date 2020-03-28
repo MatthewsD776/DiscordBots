@@ -34,7 +34,6 @@
 			<version>2.8.6</version>
 		</dependency>
 
-
 		<!-- Log4j2 -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
