@@ -17,7 +17,7 @@ public class DiscordBot {
 			TextChannel channel = event.getChannel();
 
 			if (message.startsWith("!starwars")) {
-				MessageBuilder response = StarWars.analyse(message, event);
+				MessageBuilder response = StarWars.analyse(message);
 				response.send(channel);
 			}
 		});

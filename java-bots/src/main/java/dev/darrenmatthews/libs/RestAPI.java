@@ -8,6 +8,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class RestAPI {
+	private RestAPI() {
+	}
 
 	public static String getRequest(String url) throws RestAPIException {
 		OkHttpClient client = new OkHttpClient();
@@ -15,7 +17,7 @@ public class RestAPI {
 
 		try {
 			Response response = client.newCall(request).execute();
-			
+
 			if (!response.isSuccessful()) {
 				throw new RestAPIException("Unsuccesful Request");
 			}

@@ -11,9 +11,12 @@ import dev.darrenmatthews.libs.RestAPI;
 public class StarWarsAPI {
 	private static final String STAR_WARS_API_ROOT = "https://swapi.co/api/";
 
+	private StarWarsAPI() {
+	}
+
 	public static MessageBuilder getFilmInformation(String filmId) throws RestAPIException {
 		String filmUrl = STAR_WARS_API_ROOT + "films/" + filmId;
-		
+
 		String jsonString = RestAPI.getRequest(filmUrl);
 
 		JSONObject obj = new JSONObject(jsonString);
