@@ -1,6 +1,9 @@
 package dev.darrenmatthews.restapi;
 
 import java.awt.Color;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.json.JSONObject;
@@ -9,12 +12,14 @@ import dev.darrenmatthews.discord.exceptions.RestAPIException;
 import dev.darrenmatthews.libs.RestAPI;
 
 public class StarWarsAPI {
+	private static final Logger LOGGER = LogManager.getLogger();
 	private static final String STAR_WARS_API_ROOT = "https://swapi.co/api/";
 
 	private StarWarsAPI() {
 	}
 
 	public static MessageBuilder getFilmInformation(String filmId) throws RestAPIException {
+		LOGGER.info("Obtaining Star Wars Information for {}", filmId);
 		String filmUrl = STAR_WARS_API_ROOT + "films/" + filmId;
 
 		String jsonString = RestAPI.getRequest(filmUrl);

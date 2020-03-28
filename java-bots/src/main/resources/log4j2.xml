@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration status="INFO">
+
+	<Properties>
+		<Property name="LOG_PATTERN">%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level
+			%logger{36} - %msg%n</Property>
+	</Properties>
+
+	<Appenders>
+		<Console name="logToConsole" target="SYSTEM_OUT">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+		</Console>
+		<File name="logToFile" fileName="bot.log" append="false">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+		</File>
+	</Appenders>
+
+	<Loggers>
+		<Root level="debug" additivity="false">
+			<AppenderRef ref="logToFile" />
+			<AppenderRef ref="logToConsole" />
+		</Root>
+	</Loggers>
+</Configuration>

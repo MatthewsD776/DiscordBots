@@ -6,7 +6,7 @@ import dev.darrenmatthews.discord.exceptions.RestAPIException;
 import dev.darrenmatthews.restapi.StarWarsAPI;
 
 public class StarWars {
-	
+
 	private StarWars() {
 	}
 
