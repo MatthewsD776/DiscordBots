@@ -5,13 +5,16 @@ import java.awt.Color;
 import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 
-public class BitchException extends Exception implements DiscordException{
+public class BasicBitchException extends DiscordException{
 	private static final long serialVersionUID = 1L;
 	
-	public BitchException(String culprit) {
+	public BasicBitchException(String culprit) {
 		super(culprit);
 	}
-
+	
+	public static MessageBuilder getDiscordException(String user) {
+		return new BasicBitchException(user).getDiscordException();
+	}
 	
 	public MessageBuilder getDiscordException() {
 		EmbedBuilder builder = new EmbedBuilder();
