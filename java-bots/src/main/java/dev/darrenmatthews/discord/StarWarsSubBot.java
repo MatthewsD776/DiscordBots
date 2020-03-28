@@ -17,7 +17,6 @@ public class StarWarsSubBot {
 	}
 
 	public static MessageBuilder analyse(String command) {
-		MessageBuilder response = null;
 		List<String> params = Arrays.asList(command.split(" "));
 		
 		if(params.size() <= 1) {
@@ -32,7 +31,7 @@ public class StarWarsSubBot {
 			return filmsCommand();
 		}
 
-		return response;
+		return commandError();
 	}
 	
 	private static MessageBuilder filmsCommand() {
