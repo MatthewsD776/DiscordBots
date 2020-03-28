@@ -1,4 +1,4 @@
-package dev.darrenmatthews.discord.exceptions;
+package dev.darrenmatthews.exceptions;
 
 import org.javacord.api.entity.message.MessageBuilder;
 

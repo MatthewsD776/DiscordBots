@@ -22,7 +22,7 @@ public class DiscordBot {
 
 			if (message.startsWith("!starwars")) {
 				LOGGER.info("Received Star Wars event from {} on {}", author, channel);
-				MessageBuilder response = StarWars.analyse(message);
+				MessageBuilder response = StarWarsSubBot.analyse(message);
 				response.send(channel);
 				LOGGER.info("Star Wars event from {} on {} complete", author, channel);
 			}

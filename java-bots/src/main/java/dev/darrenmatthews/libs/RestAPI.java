@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import dev.darrenmatthews.discord.exceptions.RestAPIException;
+import dev.darrenmatthews.exceptions.RestAPIException;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

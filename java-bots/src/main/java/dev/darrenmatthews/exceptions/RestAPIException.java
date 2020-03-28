@@ -1,4 +1,4 @@
-package dev.darrenmatthews.discord.exceptions;
+package dev.darrenmatthews.exceptions;
 
 public class RestAPIException extends Exception {
 	private static final long serialVersionUID = 1L;

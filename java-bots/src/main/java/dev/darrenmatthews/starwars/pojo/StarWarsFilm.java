@@ -1,4 +1,4 @@
-package dev.darrenmatthews.pojo;
+package dev.darrenmatthews.starwars.pojo;
 
 import java.awt.Color;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.javacord.api.entity.message.embed.EmbedBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class StarWarsFilm {
+public class StarWarsFilm extends StarWarsInformation {
 
 	@SerializedName("title")
 	@Expose
