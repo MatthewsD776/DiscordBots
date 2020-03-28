@@ -1,4 +1,4 @@
-package com.darrenmatthews.dev.discord;
+package dev.darrenmatthews.discord.exceptions;
 
 import java.awt.Color;
 

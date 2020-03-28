@@ -1,11 +1,14 @@
-package com.darrenmatthews.dev.discord;
+package dev.darrenmatthews.discord;
 
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.MessageBuilder;
 
-public class DiscordTest {
+import dev.darrenmatthews.discord.exceptions.BitchException;
+import dev.darrenmatthews.restapi.StarWarsAPI;
+
+public class DiscordBot {
 
 	public static void main(String[] args) {
 		String token = System.getenv("DISCORD_TOKEN");

@@ -1,4 +1,4 @@
-package com.darrenmatthews.dev.discord;
+package dev.darrenmatthews.restapi;
 
 import java.awt.Color;
 import java.io.IOException;
@@ -7,6 +7,7 @@ import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.json.JSONObject;
 
+import dev.darrenmatthews.discord.exceptions.BitchException;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
