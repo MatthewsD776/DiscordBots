@@ -8,10 +8,12 @@ import org.javacord.api.entity.message.MessageBuilder;
 import dev.darrenmatthews.exceptions.BasicBitchException;
 import dev.darrenmatthews.exceptions.RestAPIException;
 import dev.darrenmatthews.starwars.api.StarWarsFilmAPI;
+import dev.darrenmatthews.starwars.api.StarWarsPeopleAPI;
 import dev.darrenmatthews.starwars.pojo.StarWarsFilm;
 import dev.darrenmatthews.starwars.pojo.StarWarsFilms;
+import dev.darrenmatthews.starwars.pojo.StarWarsPerson;
 
-public class StarWarsSubBot {
+public class StarWarsSubBot extends SubBot {
 
 	private StarWarsSubBot() {
 	}
@@ -29,11 +31,29 @@ public class StarWarsSubBot {
 			return filmCommand(params);
 		} else if (topic.equalsIgnoreCase("films")) {
 			return filmsCommand();
+		} else if (topic.equalsIgnoreCase("person")) {
+			return personCommand(params);
 		}
 
 		return commandError();
 	}
 	
+	private static MessageBuilder personCommand(List<String> params) {
+		if(params.size() <= 2) {
+			return commandError();
+		}
+		
+		String id = params.get(2);
+		
+		try {
+			StarWarsPerson person = StarWarsPeopleAPI.getPersonById(id);
+			return person.renderDiscord();
+		} catch (RestAPIException e) {
+			return BasicBitchException.getDiscordException(e.getMessage());
+		}
+		
+	}
+
 	private static MessageBuilder filmsCommand() {
 		try {
 			StarWarsFilms films = StarWarsFilmAPI.getAllFilms();
@@ -60,9 +80,5 @@ public class StarWarsSubBot {
 		} catch (RestAPIException e) {
 			return BasicBitchException.getDiscordException(e.getMessage());
 		}
-	}
-	
-	private static MessageBuilder commandError() {
-		return new MessageBuilder().append("Unrecoginized Commands");
 	}
 }
